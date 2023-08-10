@@ -64,7 +64,7 @@ checkIn(flight, passenger);
 console.log(flight);
 console.log(passenger);
 */
-
+/*
 // FUNCTIONS WITH CALLBACK
 
 const oneWord = function (str) {
@@ -92,3 +92,26 @@ const high5 = function () {
 };
 console.log('');
 ['a', 'b', 'c'].forEach(high5);
+*/
+
+// FUNCTIONS RETURNING FUNCTIONS
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greet2 = greeting => name => console.log(`${greeting} ${name}`);
+
+const greeterHey = greet('Hey');
+greeterHey('Alexandre');
+greeterHey('Elizabete');
+
+greet('Hello')('World');
+
+const greeterHello2 = greet2('Hey');
+greeterHello2('Alexandre');
+greeterHello2('Elizabete');
+
+greet2('Hello')('World');
