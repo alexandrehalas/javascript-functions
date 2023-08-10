@@ -32,6 +32,7 @@ createBooking('LH900', undefined, 2000)
 
 */
 
+/*
 // PASSING ARGUMENTS: VALUE VS REFERENCE
 
 const flight = 'LH123';
@@ -59,5 +60,35 @@ const newPassport = function (passenger) {
 checkIn(flight, passenger);
 newPassport(passenger);
 checkIn(flight, passenger);
+
 console.log(flight);
 console.log(passenger);
+*/
+
+// FUNCTIONS WITH CALLBACK
+
+const oneWord = function (str) {
+  return str.replaceAll(' ', '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// HIGHER FUNCTION
+const transformer = function (str, fn) {
+  console.log(`Original String: ${str}`);
+  console.log(`Transformed String: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is really cool!', oneWord);
+console.log('');
+transformer('JavaScript is really cool!', upperFirstWord);
+
+const high5 = function () {
+  console.log('✋');
+};
+console.log('');
+['a', 'b', 'c'].forEach(high5);
