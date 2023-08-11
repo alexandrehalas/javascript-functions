@@ -94,6 +94,7 @@ console.log('');
 ['a', 'b', 'c'].forEach(high5);
 */
 
+/*
 // FUNCTIONS RETURNING FUNCTIONS
 
 const greet = function (greeting) {
@@ -115,3 +116,53 @@ greeterHello2('Alexandre');
 greeterHello2('Elizabete');
 
 greet2('Hello')('World');
+*/
+
+// THE CALL AND APPLY METHODS
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  code: 'LH',
+  bookings: [],
+  //book : function() {}
+  book(flightNumber, passangerName) {
+    console.log(
+      `${passangerName} booked a seat on ${this.airline} flight ${flightNumber}`
+    );
+    this.bookings.push({
+      flight: `${this.airline}${flightNumber}`,
+      name: `${passangerName}`,
+    });
+  },
+};
+
+lufthansa.book(123, 'Alexandre');
+lufthansa.book(456, 'Elizabete');
+console.log(lufthansa.bookings);
+
+const eurowings = {
+  airline: 'Eurowings',
+  code: 'EU',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+//doesnt work
+//book(789, 'Gabriel');
+
+// CALL method
+book.call(eurowings, 789, 'Gabriel');
+console.log(eurowings.bookings);
+
+book.call(lufthansa, 901, 'Giulia');
+console.log(lufthansa.bookings);
+
+// APPLY method
+// it not more used in modern javascript way
+book.apply(lufthansa, [234, 'Afonso']);
+console.log(lufthansa.bookings);
+
+// this is used now
+book.call(lufthansa, ...[567, 'Josiane']);
+console.log(lufthansa.bookings);
