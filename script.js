@@ -118,6 +118,7 @@ greeterHello2('Elizabete');
 greet2('Hello')('World');
 */
 
+/*
 // THE CALL AND APPLY METHODS
 
 const lufthansa = {
@@ -208,3 +209,18 @@ const addTaxRate = function (rate) {
 
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(200));
+*/
+
+//IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)
+
+// Run function immediately without save it in somewhere
+
+// add parentesis makes transform the statement into an expression
+
+// IIFE pattern
+(function () {
+  console.log('This will never run again');
+  //const itsNotAccessibleExternallyFromThisBlock = 23;
+})();
+
+(() => console.log('This will ALSO never run again'))();
