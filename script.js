@@ -210,8 +210,8 @@ const addTaxRate = function (rate) {
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(200));
 */
-
-//IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)
+/*
+// IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)
 
 // Run function immediately without save it in somewhere
 
@@ -224,3 +224,23 @@ console.log(addVAT2(200));
 })();
 
 (() => console.log('This will ALSO never run again'))();
+*/
+
+// CLOSURES
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
