@@ -166,3 +166,45 @@ console.log(lufthansa.bookings);
 // this is used now
 book.call(lufthansa, ...[567, 'Josiane']);
 console.log(lufthansa.bookings);
+
+// BIND method
+//book.call(eurowings, 789, 'Gabriel');
+const bookEurowings = book.bind(eurowings);
+const bookLufthansa = book.bind(lufthansa);
+
+bookEurowings(890, 'Gabrielly');
+bookLufthansa(98, 'Giulia');
+
+const bookEurowings123 = book.bind(eurowings, 123);
+bookEurowings123('Halas');
+bookEurowings123('Halas Halas');
+
+//BIND with event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  lufthansa.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application pattern
+
+const addTax = (rate, value) => value + value * rate;
+
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(200));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(200));
